@@ -1,5 +1,8 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const products = [
   {
@@ -22,6 +25,23 @@ const products = [
   },
 ];
 
+// Animation variants
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    x: 100, // slide from right
+  },
+  visible: (index: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      delay: index * 0.15, // stagger effect
+    },
+  }),
+};
+
 export default function FeaturedProduct() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-10">
@@ -31,8 +51,16 @@ export default function FeaturedProduct() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-14 mt-12">
-        {products.map(({ id, image, title, description }) => (
-          <div key={id} className="relative group">
+        {products.map(({ id, image, title, description }, index) => (
+          <motion.div
+            key={id}
+            className="relative group"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            custom={index}
+          >
             <Image
               src={image}
               alt={title}
@@ -40,17 +68,17 @@ export default function FeaturedProduct() {
               width={400}
               height={400}
             />
+
             <div className="group-hover:-translate-y-4 transition duration-300 absolute bottom-8 left-8 text-white space-y-2">
               <p className="font-medium text-xl lg:text-2xl">{title}</p>
               <p className="text-sm lg:text-base leading-5 max-w-60">
                 {description}
               </p>
               <button className="flex items-center gap-1.5 bg-[#763919] px-4 py-2 rounded">
-                Order now{" "}
-                <ArrowRight size={16}/>
+                Order now <ArrowRight size={16} />
               </button>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
