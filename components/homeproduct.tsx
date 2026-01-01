@@ -23,7 +23,7 @@ export default function HomeProduct() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
 
-      {/* Section Title */}
+      {/* Section */}
       <motion.div
         variants={titleVariants}
         initial="hidden"
@@ -77,7 +77,7 @@ export default function HomeProduct() {
                 <span className="lg:text-lg font-bold text-[#763919]">
                   ₦{product.price.toLocaleString()}
                 </span>
-                <button className="bg-[#763919] text-white px-4 py-2 rounded-sm text-sm font-medium hover:bg-[#5c2b12] transition">
+                <button className="bg-[#763919] text-white px-4 py-2 rounded-sm text-sm font-medium hover:bg-[#5c2b12] transition cursor-pointer">
                   Add to Cart
                 </button>
               </div>
@@ -85,6 +85,10 @@ export default function HomeProduct() {
           </motion.div>
         ))}
       </motion.div>
+
+        <button className="mt-10 bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition justify-center mx-auto flex rounded-sm cursor-pointer">
+          View All Products
+        </button>
     </section>
   );
 }
