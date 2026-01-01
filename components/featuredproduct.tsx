@@ -25,23 +25,6 @@ const products = [
   },
 ];
 
-// Animation variants
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    x: 100, // slide from right
-  },
-  visible: (index: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
-      delay: index * 0.15, // stagger effect
-    },
-  }),
-};
-
 export default function FeaturedProduct() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-10">
@@ -55,18 +38,21 @@ export default function FeaturedProduct() {
           <motion.div
             key={id}
             className="relative group"
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            custom={index}
+            transition={{
+              duration: 0.6,
+              delay: index * 0.15,
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
           >
             <Image
               src={image}
               alt={title}
-              className="group-hover:brightness-75 transition duration-300 w-full h-auto object-cover"
               width={400}
               height={400}
+              className="group-hover:brightness-75 transition duration-300 w-full h-auto object-cover"
             />
 
             <div className="group-hover:-translate-y-4 transition duration-300 absolute bottom-8 left-8 text-white space-y-2">
