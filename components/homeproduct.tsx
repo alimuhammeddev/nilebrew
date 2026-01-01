@@ -11,7 +11,7 @@ const titleVariants = {
     opacity: 1, 
     x: 0, 
     scale: 1, 
-    transition: { duration: 0.6, ease: "easeOut" } 
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } 
   },
 };
 
@@ -24,7 +24,7 @@ const containerVariants = {
 // Card variants for scroll + hover
 const cardVariants = {
   hidden: { opacity: 0, y: 50, scale: 0.92 },
-  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function HomeProduct() {
