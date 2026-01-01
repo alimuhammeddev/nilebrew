@@ -38,7 +38,7 @@ export default function FeaturedProduct() {
           <motion.div
             key={id}
             className="relative group"
-            initial={{ opacity: 0, x: 100 }}
+            initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{
