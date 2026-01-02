@@ -32,7 +32,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4"
           >
             <a
-              href="#menu"
+              href="/menu"
               className="inline-block px-6 lg:py-3 py-2 bg-[#763919] text-white font-semibold rounded-sm shadow-lg hover:bg-[#5c2b12] transition-transform"
             >
               Explore Menu

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import products from "@/data/products";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const titleVariants = {
   hidden: { opacity: 0, x: -50, scale: 0.95 },
@@ -20,6 +21,7 @@ const cardVariants = {
 };
 
 export default function HomeProduct() {
+  const router = useRouter();
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
 
@@ -86,7 +88,7 @@ export default function HomeProduct() {
         ))}
       </motion.div>
 
-        <button className="mt-10 bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition justify-center mx-auto flex rounded-sm cursor-pointer">
+        <button onClick={() => router.push("/menu")} className="mt-10 bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition justify-center mx-auto flex rounded-sm cursor-pointer">
           View All Products
         </button>
     </section>
