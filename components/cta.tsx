@@ -33,7 +33,7 @@ export default function CTA() {
 
         {/* Button */}
         <motion.button
-          className="mt-8 inline-flex items-center justify-center rounded-md bg-white px-8 py-3 text-lg font-semibold text-[#763919] shadow-md hover:bg-[#f0e6dc] transition"
+          className="mt-8 inline-flex items-center justify-center rounded-md bg-white px-8 py-3 lg:text-lg font-semibold text-[#763919] shadow-md hover:bg-[#f0e6dc] transition"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}

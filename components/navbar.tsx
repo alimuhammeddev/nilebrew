@@ -27,11 +27,11 @@ export const Navbar = () => {
             <Link href="/" className="text-gray-600 hover:text-[#763919] font-medium">
               Home
             </Link>
-            <Link href="/about" className="text-gray-600 hover:text-[#763919] font-medium">
-              About
-            </Link>
             <Link href="/menu" className="text-gray-600 hover:text-[#763919] font-medium">
               Menu
+            </Link>
+            <Link href="/about" className="text-gray-600 hover:text-[#763919] font-medium">
+              About
             </Link>
             <Link href="/gallery" className="text-gray-600 hover:text-[#763919] font-medium">
               Gallery
@@ -69,11 +69,11 @@ export const Navbar = () => {
           <Link href="/" className="block text-white hover:text-gray-400">
             Home
           </Link>
-          <Link href="/about" className="block text-white hover:text-gray-400">
-            About
-          </Link>
           <Link href="/menu" className="block text-white hover:text-gray-400">
             Menu
+          </Link>
+          <Link href="/about" className="block text-white hover:text-gray-400">
+            About
           </Link>
           <Link href="/gallery" className="block text-white hover:text-gray-400">
             Gallery
