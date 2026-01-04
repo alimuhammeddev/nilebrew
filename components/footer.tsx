@@ -6,7 +6,8 @@ export default function Footer() {
       <footer>
         <div className="flex flex-col md:flex-row items-start justify-center gap-10 lg:py-14 py-5 border-b border-[#763919] text-gray-500">
           <div className="lg:w-4/5">
-            <Image src="/logo.png" alt="logo" width={120} height={120} />
+            <Image src="/logo.png" alt="logo" width={120} height={40} priority
+                style={{ width: "auto", height: "auto" }}/>
             <p className="mt-6 text-sm text-[#763919]">
               <span className="text-[#763919] font-semibold">Nile Brew</span> is a cozy coffee destination crafted for true coffee
               lovers. We source quality beans, brew with passion, and serve

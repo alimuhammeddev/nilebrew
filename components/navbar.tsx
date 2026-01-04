@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu, ShoppingCart, User, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -18,25 +19,47 @@ export const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
-              <img src="/logo.png" alt="Brand Logo" width={120} height={120} />
+              <Image
+                src="/logo.png"
+                alt="Brand Logo"
+                width={120}
+                height={40}
+                priority
+                style={{ width: "100%", height: "auto" }}
+              />
             </Link>
           </div>
 
           {/* Links */}
           <div className="hidden md:flex space-x-8 justify-center flex-1">
-            <Link href="/" className="text-gray-600 hover:text-[#763919] font-medium">
+            <Link
+              href="/"
+              className="text-gray-600 hover:text-[#763919] font-medium"
+            >
               Home
             </Link>
-            <Link href="/menu" className="text-gray-600 hover:text-[#763919] font-medium">
+            <Link
+              href="/menu"
+              className="text-gray-600 hover:text-[#763919] font-medium"
+            >
               Menu
             </Link>
-            <Link href="/about" className="text-gray-600 hover:text-[#763919] font-medium">
+            <Link
+              href="/about"
+              className="text-gray-600 hover:text-[#763919] font-medium"
+            >
               About
             </Link>
-            <Link href="/gallery" className="text-gray-600 hover:text-[#763919] font-medium">
+            <Link
+              href="/gallery"
+              className="text-gray-600 hover:text-[#763919] font-medium"
+            >
               Gallery
             </Link>
-            <Link href="/contact" className="text-gray-600 hover:text-[#763919] font-medium">
+            <Link
+              href="/contact"
+              className="text-gray-600 hover:text-[#763919] font-medium"
+            >
               Contact
             </Link>
           </div>
@@ -46,7 +69,10 @@ export const Navbar = () => {
             <Link href="/cart" className="text-gray-600 hover:text-[#763919]">
               <ShoppingCart size={20} />
             </Link>
-            <Link href="/profile" className="text-gray-600 hover:text-[#763919]">
+            <Link
+              href="/profile"
+              className="text-gray-600 hover:text-[#763919]"
+            >
               <User size={20} />
             </Link>
 
@@ -75,7 +101,10 @@ export const Navbar = () => {
           <Link href="/about" className="block text-white hover:text-gray-400">
             About
           </Link>
-          <Link href="/gallery" className="block text-white hover:text-gray-400">
+          <Link
+            href="/gallery"
+            className="block text-white hover:text-gray-400"
+          >
             Gallery
           </Link>
           <Link

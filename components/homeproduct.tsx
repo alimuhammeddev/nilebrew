@@ -20,6 +20,10 @@ const cardVariants = {
   show: { opacity: 1, y: 0, scale: 1 },
 };
 
+const homeProducts = products.filter(
+  (product) => product.showOnHome !== false
+);
+
 export default function HomeProduct() {
   const router = useRouter();
   return (
@@ -46,7 +50,7 @@ export default function HomeProduct() {
         viewport={{ once: true, amount: 0.05 }}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 gap-5"
       >
-        {products.map((product) => (
+        {homeProducts.map((product) => (
           <motion.div
             key={product.id}
             variants={cardVariants}
