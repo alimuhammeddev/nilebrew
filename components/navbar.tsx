@@ -80,7 +80,7 @@ export const Navbar = () => {
             <div className="md:hidden flex items-center">
               <button
                 onClick={toggleMenu}
-                className="text-gray-600 hover:text-[#763919]"
+                className="text-gray-600 hover:text-[#763919] cursor-pointer"
               >
                 {isOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
