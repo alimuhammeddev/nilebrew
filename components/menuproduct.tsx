@@ -39,7 +39,6 @@ export default function MenuProduct() {
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-24 mt-14">
-      {/* Section Title */}
       <motion.div
         variants={titleVariants}
         initial="hidden"
@@ -53,15 +52,23 @@ export default function MenuProduct() {
       </motion.div>
 
       {/* Search Input */}
-      <div className="mb-8">
-        <input
-          type="text"
-          placeholder="Search products..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full lg:flex justify-center mx-auto sm:w-80 px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
-        />
-      </div>
+      <motion.div
+        variants={titleVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div className="mb-8">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full lg:flex justify-center mx-auto sm:w-80 px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
+          />
+        </div>
+      </motion.div>
 
       <motion.div
         variants={containerVariants}
@@ -115,12 +122,20 @@ export default function MenuProduct() {
 
       {/* See More Button */}
       {visibleCount < filteredProducts.length && (
-        <button
-          onClick={() => setVisibleCount((prev) => prev + 4)}
-          className="mt-10 bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition mx-auto flex rounded-sm"
+        <motion.div
+          variants={titleVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          See More
-        </button>
+          <button
+            onClick={() => setVisibleCount((prev) => prev + 4)}
+            className="mt-10 bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition mx-auto flex rounded-sm"
+          >
+            See More
+          </button>
+        </motion.div>
       )}
     </section>
   );
