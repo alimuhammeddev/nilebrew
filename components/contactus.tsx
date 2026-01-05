@@ -21,28 +21,28 @@ export default function ContactUS() {
             <input
               type="text"
               placeholder="Full Name"
-              className="w-72 lg:w-xl px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
             />
           </div>
           <div className="mb-8">
             <input
               type="text"
               placeholder="Email Address"
-              className="w-72 lg:w-xl px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
             />
           </div>
           <div className="mb-8">
             <input
               type="text"
               placeholder="Phone Number"
-              className="w-72 lg:w-xl px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
             />
           </div>
           <div className="mb-8">
             <textarea
               rows={5}
               placeholder="Your message..."
-              className="w-72 lg:w-xl px-4 py-3 border border-gray-300 rounded-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#763919]"
+              className="w-full px-4 py-3 border border-gray-300 rounded-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#763919]"
             />
           </div>
           <button className="bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition rounded-sm cursor-pointer w-72 lg:w-xl">
