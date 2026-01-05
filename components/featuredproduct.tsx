@@ -3,6 +3,7 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const products = [
   {
@@ -28,6 +29,7 @@ const products = [
 ];
 
 export default function FeaturedProduct() {
+  const router = useRouter();
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-10">
       <div className="flex flex-col items-center">
@@ -62,7 +64,10 @@ export default function FeaturedProduct() {
               <p className="text-sm lg:text-base leading-5 max-w-60">
                 {description}
               </p>
-              <button className="flex items-center gap-1.5 bg-[#763919] px-4 py-2 rounded">
+              <button
+                onClick={() => router.push("/menu")}
+                className="flex items-center gap-1.5 bg-[#763919] px-4 py-2 rounded cursor-pointer"
+              >
                 Order now <ArrowRight size={16} />
               </button>
             </div>

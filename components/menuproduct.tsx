@@ -122,7 +122,7 @@ export default function MenuProduct() {
                 <span className="lg:text-lg font-bold text-[#763919]">
                   ₦{product.price.toLocaleString()}
                 </span>
-                <button className="bg-[#763919] text-white px-4 py-2 rounded-sm text-sm hover:bg-[#5c2b12] transition">
+                <button className="bg-[#763919] text-white px-4 py-2 rounded-sm text-sm hover:bg-[#5c2b12] transition cursor-pointer">
                   Add to Cart
                 </button>
               </div>
@@ -142,7 +142,7 @@ export default function MenuProduct() {
         >
           <button
             onClick={() => setVisibleCount((prev) => prev + 4)}
-            className="mt-10 bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition mx-auto flex rounded-sm"
+            className="mt-10 bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition mx-auto flex rounded-sm cursor-pointer"
           >
             See More
           </button>
