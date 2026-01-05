@@ -48,7 +48,7 @@ export default function HomeProduct() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.05 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 gap-5"
+        className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 lg:gap-8 gap-5"
       >
         {homeProducts.map((product) => (
           <motion.div
