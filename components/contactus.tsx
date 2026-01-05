@@ -5,12 +5,12 @@ export default function ContactUS() {
         <p className="lg:text-xl font-medium">Contact Us</p>
         <div className="w-28 h-0.5 bg-[#763919] mt-2"></div>
       </div>
-      <div className="flex lg:flex-row md:flex-row flex-col items-center mx-auto justify-between lg:gap-28 gap-5 mt-10">
+      <div className="flex lg:flex-row flex-col items-center mx-auto justify-between lg:gap-28 gap-5 mt-10">
         <div className="space-y-4">
-          <h1 className="text-lg lg:text-2xl font-medium">
+          <h1 className="text-lg lg:text-2xl font-medium lg:text-start md:text-center">
             Let's Brew Something Exceptional
           </h1>
-          <p className="text-gray-600 lg:text-base text-sm">
+          <p className="text-gray-600 lg:text-base text-sm lg:text-start md:text-center">
             Have a question, collaboration idea, or feedback? Connect with{" "}
             <span className="font-medium text-[#763919]">Nile Brew</span> where
             every conversation starts with great coffee.
