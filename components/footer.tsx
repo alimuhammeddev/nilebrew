@@ -22,22 +22,22 @@ export default function Footer() {
               <h2 className="font-semibold text-[#763919] mb-5">Company</h2>
               <ul className="text-sm space-y-2">
                 <li>
-                  <a className="hover:underline transition text-[#763919]" href="#">
+                  <a className="hover:underline transition text-[#763919]" href="/">
                     Home
                   </a>
                 </li>
                 <li>
-                  <a className="hover:underline transition text-[#763919]" href="#">
+                  <a className="hover:underline transition text-[#763919]" href="/about">
                     About us
                   </a>
                 </li>
                 <li>
-                  <a className="hover:underline transition text-[#763919]" href="#">
+                  <a className="hover:underline transition text-[#763919]" href="/contact">
                     Contact us
                   </a>
                 </li>
                 <li>
-                  <a className="hover:underline transition text-[#763919]" href="#">
+                  <a className="hover:underline transition text-[#763919]" href="/about">
                     Privacy policy
                   </a>
                 </li>

@@ -70,6 +70,17 @@ export default function MenuProduct() {
         </div>
       </motion.div>
 
+      {filteredProducts.length === 0 && (
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="text-center text-gray-500 mt-12"
+        >
+          No products found matching your search.
+        </motion.p>
+      )}
+
       <motion.div
         variants={containerVariants}
         initial="hidden"
