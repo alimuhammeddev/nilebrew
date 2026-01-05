@@ -8,19 +8,19 @@ export default function Footer() {
           <div className="lg:w-4/5">
             <Image src="/logo.png" alt="logo" width={120} height={40} priority
                 style={{ width: "auto", height: "auto" }}/>
-            <p className="mt-6 text-sm text-[#763919]">
+            <h1 className="mt-6 lg:text-base text-sm text-[#763919]">
               <span className="text-[#763919] font-semibold">Nile Brew</span> is a cozy coffee destination crafted for true coffee
               lovers. We source quality beans, brew with passion, and serve
               every cup with care. Whether you're stopping by for your morning
               boost, a relaxed meeting, or a quiet moment, Nile Brew is where
               great coffee and good vibes meet.
-            </p>
+            </h1>
           </div>
 
           <div className="w-1/2 flex items-center justify-start md:justify-center">
             <div>
               <h2 className="font-semibold text-[#763919] mb-5">Company</h2>
-              <ul className="text-sm space-y-2">
+              <ul className="lg:text-base text-sm space-y-2">
                 <li>
                   <a className="hover:underline transition text-[#763919]" href="/">
                     Home
@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
 
           <div className="w-1/2 flex items-start justify-start md:justify-center">
-            <div>
+            <div className="lg:text-base">
               <h2 className="font-semibold text-[#763919] mb-5">Get in touch</h2>
               <div className="text-sm space-y-2 text-[#763919]">
                 <p>+1-234-567-890</p>
