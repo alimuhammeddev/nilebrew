@@ -19,7 +19,7 @@ export default function Hero() {
             Welcome to <span className="text-[#763919]">Nile Brew</span>
           </h1>
 
-          <p className="lg:text-lg text-gray-700">
+          <p className="lg:text-lg text-gray-700 lg:text-start md:text-center">
             Experience the perfect cup of coffee brewed with love and tradition.
             From rich espresso shots to creamy lattes, your coffee journey
             starts here.
