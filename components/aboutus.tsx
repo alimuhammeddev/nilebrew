@@ -136,10 +136,10 @@ export default function AboutUs() {
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full flex justify-between items-center p-6 text-left"
               >
-                <span className="lg:text-lg text-sm font-medium text-[#763919]">
+                <span className="lg:text-lg text-sm font-medium text-gray-900">
                   {faq.question}
                 </span>
-                <span className="text-2xl text-[#763919]">
+                <span className="text-2xl text-gray-900">
                   {openIndex === index ? "−" : "+"}
                 </span>
               </button>
