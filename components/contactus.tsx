@@ -16,7 +16,7 @@ export default function ContactUS() {
             every conversation starts with great coffee.
           </p>
         </div>
-        <div className="w-full max-w-md lg:max-w-lg">
+        <div className="w-full max-w-md lg:max-w-lg md:max-w-lg">
           <div className="mb-8">
             <input
               type="text"
