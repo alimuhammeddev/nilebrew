@@ -16,7 +16,7 @@ export default function ContactUS() {
             every conversation starts with great coffee.
           </p>
         </div>
-        <div>
+        <div className="w-full max-w-md lg:max-w-lg">
           <div className="mb-8">
             <input
               type="text"
@@ -45,7 +45,7 @@ export default function ContactUS() {
               className="w-full px-4 py-3 border border-gray-300 rounded-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#763919]"
             />
           </div>
-          <button className="bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition rounded-sm cursor-pointer w-72 lg:w-xl">
+          <button className="bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition rounded-sm cursor-pointer w-full">
             Send Message
           </button>
         </div>
