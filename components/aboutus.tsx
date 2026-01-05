@@ -31,7 +31,7 @@ export default function AboutUs() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-24 mt-20">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-32 mt-28">
       {/* Hero */}
       <motion.div
         initial={{ opacity: 0, }}
