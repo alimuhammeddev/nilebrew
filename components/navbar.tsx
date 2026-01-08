@@ -4,6 +4,7 @@ import { Menu, ShoppingCart, User, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,12 +70,25 @@ export const Navbar = () => {
             <Link href="/cart" className="text-gray-600 hover:text-[#763919]">
               <ShoppingCart size={20} />
             </Link>
-            <Link
-              href="/profile"
-              className="text-gray-600 hover:text-[#763919]"
-            >
-              <User size={20} />
-            </Link>
+            <div className="flex items-center">
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className="text-gray-600 hover:text-[#763919]">
+                    <User size={20} />
+                  </button>
+                </SignInButton>
+              </SignedOut>
+
+              <SignedIn>
+                <UserButton
+                  appearance={{
+                    elements: {
+                      avatarBox: "w-6 h-6",
+                    },
+                  }}
+                />
+              </SignedIn>
+            </div>
 
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center">
