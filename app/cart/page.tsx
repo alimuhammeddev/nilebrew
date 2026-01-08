@@ -1,3 +1,4 @@
+import CartPage from "@/components/cartpage";
 import { Navbar } from "@/components/navbar";
 
 export default function Cart() {
@@ -5,6 +6,10 @@ export default function Cart() {
         <section>
             <div>
                 <Navbar />
+            </div>
+
+            <div>
+                <CartPage />
             </div>
         </section>
     )
