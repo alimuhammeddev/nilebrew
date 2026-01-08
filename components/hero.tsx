@@ -60,6 +60,7 @@ export default function Hero() {
             width={500}
             height={400}
             className="w-full max-w-md h-auto rounded-2xl shadow-xl"
+            loading="eager"
           />
         </motion.div>
 

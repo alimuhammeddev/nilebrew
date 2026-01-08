@@ -134,7 +134,7 @@ export default function AboutUs() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex justify-between items-center p-6 text-left"
+                className="w-full flex justify-between items-center p-6 text-left cursor-pointer"
               >
                 <span className="lg:text-lg text-sm font-medium text-gray-900">
                   {faq.question}
