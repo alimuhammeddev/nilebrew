@@ -10,9 +10,14 @@ export default function CartPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="flex flex-col sm:flex-row items-center gap-6 bg-white rounded-2xl shadow-sm p-6">
+          <div className="flex flex-col sm:flex-row items-center gap-6 bg-white rounded-xl shadow-sm p-6">
             <div className="w-28 h-28 bg-gray-100 rounded-xl relative overflow-hidden">
-                <Image src="/coffee1.jpg" alt="" fill className="object-cover transition-transform duration-300 hover:scale-105" />
+              <Image
+                src="/coffee1.jpg"
+                alt=""
+                fill
+                className="object-cover transition-transform duration-300 hover:scale-105"
+              />
             </div>
 
             <div className="flex-1 w-full">
@@ -24,14 +29,19 @@ export default function CartPage() {
               </p>
 
               <div className="flex items-center justify-between mt-4">
-                <div className="flex items-center gap-3">
-                  <button className="w-8 h-8 rounded-full bg-[#763919] hover:bg-[#5c2b12] text-lg text-[#ffffff]">
-                    −
-                  </button>
-                  <span className="font-medium">1</span>
-                  <button className="w-8 h-8 rounded-full bg-[#763919] hover:bg-[#5c2b12] text-lg text-[#ffffff]">
-                    +
-                  </button>
+                <div>
+                  <div className="flex items-center gap-3">
+                    <button className="w-8 h-8 rounded-full bg-[#763919] hover:bg-[#5c2b12] text-lg text-[#ffffff]">
+                      −
+                    </button>
+                    <span className="font-medium">1</span>
+                    <button className="w-8 h-8 rounded-full bg-[#763919] hover:bg-[#5c2b12] text-lg text-[#ffffff]">
+                      +
+                    </button>
+                  </div>
+                  <div>
+                    <p className="text-[#763919] font-medium text-sm mt-2 cursor-pointer">Remove</p>
+                  </div>
                 </div>
 
                 <p className="font-semibold text-[#763919]">₦4,500</p>
@@ -41,7 +51,7 @@ export default function CartPage() {
         </div>
 
         {/* Delivery Information */}
-        <div className="bg-white rounded-2xl shadow-sm p-6 h-fit">
+        <div className="bg-white rounded-xl shadow-sm p-6 h-fit">
           <h2 className="text-xl font-semibold text-[#763919] mb-6">
             Delivery Information
           </h2>
@@ -55,7 +65,7 @@ export default function CartPage() {
               <input
                 type="email"
                 placeholder="you@example.com"
-                className="mt-1 w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
+                className="mt-1 w-full rounded-sm border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
               />
             </div>
 
@@ -66,7 +76,7 @@ export default function CartPage() {
               <input
                 type="tel"
                 placeholder="+234 800 000 0000"
-                className="mt-1 w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
+                className="mt-1 w-full rounded-sm border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
               />
             </div>
 
@@ -75,9 +85,9 @@ export default function CartPage() {
                 Delivery Address
               </label>
               <textarea
-                rows="3"
+                rows={3}
                 placeholder="Street, city, state"
-                className="mt-1 w-full rounded-xl border border-gray-300 px-4 py-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#763919]"
+                className="mt-1 w-full rounded-sm border border-gray-300 px-4 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#763919]"
               />
             </div>
           </div>
@@ -94,13 +104,13 @@ export default function CartPage() {
               <span className="font-medium">₦400</span>
             </div>
 
-            <div className="flex justify-between text-lg font-semibold text-[#763919]">
+            <div className="flex justify-between text-base font-medium text-[#763919]">
               <span>Total</span>
               <span>₦4,900</span>
             </div>
           </div>
 
-          <button className="mt-8 w-full bg-[#763919] text-white py-3 rounded-xl font-semibold hover:bg-[#5c2b12] transition">
+          <button className="mt-8 w-full bg-[#763919] text-white py-3 rounded-sm font-medium text-sm cursor-pointer hover:bg-[#5c2b12] transition">
             Proceed to Checkout
           </button>
 
