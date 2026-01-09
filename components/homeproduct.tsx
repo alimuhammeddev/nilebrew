@@ -4,6 +4,7 @@ import Image from "next/image";
 import products from "@/data/products";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/context/CartContext";
 
 const titleVariants = {
   hidden: { opacity: 0, x: -50, scale: 0.95 },
@@ -20,15 +21,13 @@ const cardVariants = {
   show: { opacity: 1, y: 0, scale: 1 },
 };
 
-const homeProducts = products.filter(
-  (product) => product.showOnHome !== false
-);
+const homeProducts = products.filter((product) => product.showOnHome !== false);
 
 export default function HomeProduct() {
   const router = useRouter();
+  const { addToCart } = useCart();
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-
       {/* Section */}
       <motion.div
         variants={titleVariants}
@@ -83,7 +82,17 @@ export default function HomeProduct() {
                 <span className="lg:text-lg font-bold text-[#763919]">
                   ₦{product.price.toLocaleString()}
                 </span>
-                <button className="bg-[#763919] text-white px-4 py-2 rounded-sm text-sm font-medium hover:bg-[#5c2b12] transition cursor-pointer">
+                <button
+                  onClick={() =>
+                    addToCart({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      image: product.image,
+                    })
+                  }
+                  className="bg-[#763919] text-white px-4 py-2 rounded-sm text-sm font-medium hover:bg-[#5c2b12] transition cursor-pointer"
+                >
                   Add to Cart
                 </button>
               </div>
@@ -92,9 +101,12 @@ export default function HomeProduct() {
         ))}
       </motion.div>
 
-        <button onClick={() => router.push("/menu")} className="mt-10 bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition justify-center mx-auto flex rounded-sm cursor-pointer">
-          View All Products
-        </button>
+      <button
+        onClick={() => router.push("/menu")}
+        className="mt-10 bg-[#763919] text-white px-6 py-3 text-sm font-medium hover:bg-[#5c2b12] transition justify-center mx-auto flex rounded-sm cursor-pointer"
+      >
+        View All Products
+      </button>
     </section>
   );
 }
