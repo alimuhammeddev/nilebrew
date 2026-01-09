@@ -4,7 +4,15 @@ import { Menu, ShoppingCart, User, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ClerkLoaded, ClerkLoading, SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+import { useCart } from "@/context/CartContext";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +20,8 @@ export const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const { cartCount } = useCart();
 
   return (
     <nav className="bg-white shadow-md fixed top-0 w-full z-10">
@@ -67,11 +77,13 @@ export const Navbar = () => {
 
           {/* icons */}
           <div className="flex items-center space-x-4">
-            <Link
-              href="/cart"
-              className="text-gray-600 hover:text-[#763919] cursor-pointer"
-            >
+            <Link href="/cart" className="relative">
               <ShoppingCart size={20} />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-[#763919] text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                  {cartCount}
+                </span>
+              )}
             </Link>
             <div className="flex items-center">
               <ClerkLoading>

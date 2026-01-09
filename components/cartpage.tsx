@@ -1,6 +1,19 @@
+"use client";
+
+import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 
 export default function CartPage() {
+  const {
+    cart,
+    increaseQty,
+    decreaseQty,
+    removeFromCart,
+    subtotal,
+    deliveryFee,
+    total,
+  } = useCart();
+
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-36 mt-28">
       <h1 className="lg:text-2xl text-lg font-semibold text-gray-900 mb-10">
@@ -10,44 +23,64 @@ export default function CartPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="flex flex-row lg:items-center gap-6 bg-white rounded-xl shadow-sm p-6">
-            <div className="w-20 h-20 sm:w-28 sm:h-28 bg-gray-100 rounded-xl relative overflow-hidden">
-              <Image
-                src="/coffee1.jpg"
-                alt=""
-                fill
-                className="object-cover transition-transform duration-300 hover:scale-105"
-              />
-            </div>
-
-            <div className="flex-1 w-full">
-              <h3 className="lg:text-lg text-sm font-semibold text-[#763919]">
-                Classic Arabica
-              </h3>
-              <p className="text-gray-500 lg:text-sm text-xs mt-1">
-                Rich aroma & smooth taste
+          {cart.length === 0 && (
+            <div className="bg-white rounded-xl p-10 text-center text-gray-500">
+              <p className="text-lg font-medium">Your cart is empty</p>
+              <p className="text-sm mt-2">
+                Add products from the menu to see them here.
               </p>
+            </div>
+          )}
 
-              <div className="flex items-center justify-between mt-4">
-                <div>
-                  <div className="flex items-center gap-3 lg:mt-0 -mt-2">
-                    <button className="lg:w-8 lg:h-8 w-6 h-6 rounded-full bg-[#763919] hover:bg-[#5c2b12] text-lg text-[#ffffff]">
-                      −
-                    </button>
-                    <span className="font-medium">1</span>
-                    <button className="lg:w-8 lg:h-8 w-6 h-6 rounded-full bg-[#763919] hover:bg-[#5c2b12] text-lg text-[#ffffff]">
-                      +
-                    </button>
-                  </div>
-                  <div>
-                    <p className="text-[#763919] font-medium lg:text-sm text-xs mt-2 cursor-pointer">Remove</p>
-                  </div>
+          {cart.length > 0 &&
+            cart.map((item) => (
+              <div
+                key={item.id}
+                className="flex gap-6 bg-white rounded-xl shadow-sm p-6"
+              >
+                <div className="w-24 h-24 relative">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover rounded-xl"
+                  />
                 </div>
 
-                <p className="font-semibold text-[#763919] lg:text-base text-sm">₦4,500</p>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-[#763919]">{item.name}</h3>
+
+                  <div className="flex justify-between items-center mt-4">
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => decreaseQty(item.id)}
+                        className="h-7 w-7 bg-[#763919] text-white rounded-full cursor-pointer"
+                      >
+                        −
+                      </button>
+                      <span>{item.quantity}</span>
+                      <button
+                        onClick={() => increaseQty(item.id)}
+                        className="h-7 w-7 bg-[#763919] text-white rounded-full cursor-pointer"
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <p className="font-semibold text-[#763919]">
+                      ₦{item.price.toLocaleString()}
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="text-sm text-[#763919] cursor-pointer font-medium mt-2"
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
-            </div>
-          </div>
+            ))}
         </div>
 
         {/* Delivery Information */}
@@ -65,6 +98,7 @@ export default function CartPage() {
               <input
                 type="email"
                 placeholder="you@example.com"
+                required
                 className="mt-1 w-full rounded-sm border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
               />
             </div>
@@ -76,6 +110,7 @@ export default function CartPage() {
               <input
                 type="tel"
                 placeholder="+234 800 000 0000"
+                required
                 className="mt-1 w-full rounded-sm border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
               />
             </div>
@@ -87,6 +122,7 @@ export default function CartPage() {
               <textarea
                 rows={3}
                 placeholder="Street, city, state"
+                required
                 className="mt-1 w-full rounded-sm border border-gray-300 px-4 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#763919]"
               />
             </div>
@@ -96,17 +132,19 @@ export default function CartPage() {
           <div className="space-y-4 border-t pt-6">
             <div className="flex justify-between text-gray-700">
               <span>Subtotal</span>
-              <span className="font-medium">₦4,500</span>
+              <span className="font-medium">₦{subtotal.toLocaleString()}</span>
             </div>
 
             <div className="flex justify-between text-gray-700">
               <span>Delivery Fee</span>
-              <span className="font-medium">₦400</span>
+              <span className="font-medium">
+                ₦{deliveryFee.toLocaleString()}
+              </span>
             </div>
 
             <div className="flex justify-between text-base font-medium text-[#763919]">
               <span>Total</span>
-              <span>₦4,900</span>
+              <span>₦{total.toLocaleString()}</span>
             </div>
           </div>
 

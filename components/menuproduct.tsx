@@ -4,6 +4,7 @@ import Image from "next/image";
 import products from "@/data/products";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useCart } from "@/context/CartContext";
 
 const titleVariants = {
   hidden: { opacity: 0, x: -50, scale: 0.95 },
@@ -36,6 +37,8 @@ export default function MenuProduct() {
   );
 
   const visibleProducts = filteredProducts.slice(0, visibleCount);
+
+  const { addToCart } = useCart();
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-24 mt-14">
@@ -122,7 +125,17 @@ export default function MenuProduct() {
                 <span className="lg:text-lg font-bold text-[#763919]">
                   ₦{product.price.toLocaleString()}
                 </span>
-                <button className="bg-[#763919] text-white px-4 py-2 rounded-sm text-sm hover:bg-[#5c2b12] transition cursor-pointer">
+                <button
+                  onClick={() =>
+                    addToCart({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      image: product.image,
+                    })
+                  }
+                  className="bg-[#763919] text-white px-4 py-2 rounded-sm text-sm hover:bg-[#5c2b12] transition cursor-pointer"
+                >
                   Add to Cart
                 </button>
               </div>
