@@ -10,8 +10,8 @@ export default function CartPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="flex flex-col sm:flex-row items-center gap-6 bg-white rounded-xl shadow-sm p-6">
-            <div className="w-28 h-28 bg-gray-100 rounded-xl relative overflow-hidden">
+          <div className="flex flex-row lg:items-center gap-6 bg-white rounded-xl shadow-sm p-6">
+            <div className="w-20 h-20 sm:w-28 sm:h-28 bg-gray-100 rounded-xl relative overflow-hidden">
               <Image
                 src="/coffee1.jpg"
                 alt=""
@@ -21,30 +21,30 @@ export default function CartPage() {
             </div>
 
             <div className="flex-1 w-full">
-              <h3 className="text-lg font-semibold text-[#763919]">
+              <h3 className="lg:text-lg text-sm font-semibold text-[#763919]">
                 Classic Arabica
               </h3>
-              <p className="text-gray-500 text-sm mt-1">
+              <p className="text-gray-500 lg:text-sm text-xs mt-1">
                 Rich aroma & smooth taste
               </p>
 
               <div className="flex items-center justify-between mt-4">
                 <div>
-                  <div className="flex items-center gap-3">
-                    <button className="w-8 h-8 rounded-full bg-[#763919] hover:bg-[#5c2b12] text-lg text-[#ffffff]">
+                  <div className="flex items-center gap-3 lg:mt-0 -mt-2">
+                    <button className="lg:w-8 lg:h-8 w-6 h-6 rounded-full bg-[#763919] hover:bg-[#5c2b12] text-lg text-[#ffffff]">
                       −
                     </button>
                     <span className="font-medium">1</span>
-                    <button className="w-8 h-8 rounded-full bg-[#763919] hover:bg-[#5c2b12] text-lg text-[#ffffff]">
+                    <button className="lg:w-8 lg:h-8 w-6 h-6 rounded-full bg-[#763919] hover:bg-[#5c2b12] text-lg text-[#ffffff]">
                       +
                     </button>
                   </div>
                   <div>
-                    <p className="text-[#763919] font-medium text-sm mt-2 cursor-pointer">Remove</p>
+                    <p className="text-[#763919] font-medium lg:text-sm text-xs mt-2 cursor-pointer">Remove</p>
                   </div>
                 </div>
 
-                <p className="font-semibold text-[#763919]">₦4,500</p>
+                <p className="font-semibold text-[#763919] lg:text-base text-sm">₦4,500</p>
               </div>
             </div>
           </div>
