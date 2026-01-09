@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
 export interface CartItem {
   id: number;
@@ -26,6 +26,17 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem("nilebrew-cart");
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("nilebrew-cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (item: Omit<CartItem, "quantity">) => {
     setCart((prev) => {
@@ -63,10 +74,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  /** ✅ DISTINCT PRODUCT COUNT (NOT QUANTITY) */
   const cartCount = cart.length;
 
-  /** ✅ PRICE CALCULATIONS */
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
