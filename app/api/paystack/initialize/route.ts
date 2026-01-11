@@ -10,7 +10,9 @@ export async function POST(req: NextRequest) {
         status: "error",
         message: "Invalid email or amount",
       });
-    }
+    };
+
+    const callbackUrl = `${process.env.NEXT_PUBLIC_APP_URL}/cart`;
 
     const paystackRes = await fetch("https://api.paystack.co/transaction/initialize", {
       method: "POST",
@@ -22,7 +24,7 @@ export async function POST(req: NextRequest) {
         email,
         amount,
         currency: "NGN",
-        callback_url: "http://localhost:3000/cart",
+        callback_url: callbackUrl,
       }),
     });
 
