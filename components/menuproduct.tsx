@@ -5,6 +5,7 @@ import products from "@/data/products";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
+import toast from "react-hot-toast";
 
 const titleVariants = {
   hidden: { opacity: 0, x: -50, scale: 0.95 },
@@ -126,14 +127,15 @@ export default function MenuProduct() {
                   ₦{product.price.toLocaleString()}
                 </span>
                 <button
-                  onClick={() =>
+                  onClick={() => {
                     addToCart({
                       id: product.id,
                       name: product.name,
                       price: product.price,
                       image: product.image,
                     })
-                  }
+                    toast.success(`${product.name} added to cart`);
+                  }}
                   className="bg-[#763919] text-white px-4 py-2 rounded-sm text-sm hover:bg-[#5c2b12] transition cursor-pointer"
                 >
                   Add to Cart

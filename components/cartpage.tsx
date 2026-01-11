@@ -2,6 +2,9 @@
 
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { useUser, SignInButton } from "@clerk/nextjs";
 
 export default function CartPage() {
   const {
@@ -13,6 +16,49 @@ export default function CartPage() {
     deliveryFee,
     total,
   } = useCart();
+
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+
+  const { isSignedIn, user } = useUser();
+
+  const handleCheckout = async () => {
+    if (cart.length === 0) return;
+
+    if (!isSignedIn) {
+    toast.error("Please sign in to proceed to checkout");
+    return;
+  }
+
+    if (!email || !phone || !address) {
+      toast.error("Please fill in all delivery details before checkout");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/paystack/initialize", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: total * 100,
+          email: "customer@example.com", // replace with form email if needed
+        }),
+      });
+
+      const data = await res.json();
+      console.log("Paystack initialize response:", data);
+
+      if (data.status) {
+        window.location.href = data.data.authorization_url;
+      } else {
+        toast.error(`Payment failed: ${data.message || "Unknown error"}`);
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Payment initialization error");
+    }
+  };
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-36 mt-28">
@@ -97,6 +143,8 @@ export default function CartPage() {
               </label>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
                 required
                 className="mt-1 w-full rounded-sm border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
@@ -109,6 +157,8 @@ export default function CartPage() {
               </label>
               <input
                 type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 placeholder="+234 800 000 0000"
                 required
                 className="mt-1 w-full rounded-sm border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#763919]"
@@ -121,6 +171,8 @@ export default function CartPage() {
               </label>
               <textarea
                 rows={3}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
                 placeholder="Street, city, state"
                 required
                 className="mt-1 w-full rounded-sm border border-gray-300 px-4 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#763919]"
@@ -148,7 +200,15 @@ export default function CartPage() {
             </div>
           </div>
 
-          <button className="mt-8 w-full bg-[#763919] text-white py-3 rounded-sm font-medium text-sm cursor-pointer hover:bg-[#5c2b12] transition">
+          <button
+            onClick={handleCheckout}
+            disabled={cart.length === 0}
+            className={`mt-8 w-full py-3 rounded-sm font-medium text-sm transition ${
+              cart.length === 0
+                ? "bg-gray-300 cursor-not-allowed"
+                : "bg-[#763919] text-white hover:bg-[#5c2b12] cursor-pointer"
+            }`}
+          >
             Proceed to Checkout
           </button>
 

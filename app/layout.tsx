@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { CartProvider } from "@/context/CartContext";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +32,18 @@ export default function RootLayout({
           suppressHydrationWarning
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <CartProvider>{children}</CartProvider>
+          <CartProvider>
+            {children}{" "}
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                duration: 2500,
+                style: {
+                  fontSize: "14px",
+                },
+              }}
+            />
+          </CartProvider>
         </body>
       </html>
     </ClerkProvider>
