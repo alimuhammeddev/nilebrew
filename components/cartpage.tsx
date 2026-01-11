@@ -6,6 +6,8 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useUser, SignInButton } from "@clerk/nextjs";
 import Loading from "./loading";
+import { useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function CartPage() {
   const {
@@ -23,15 +25,28 @@ export default function CartPage() {
   const [address, setAddress] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const searchParams = useSearchParams();
+  const reference = searchParams.get("reference");
+  const { clearCart } = useCart();
+  const hasClearedCart = useRef(false);
+
+  useEffect(() => {
+    if (reference && !hasClearedCart.current) {
+      hasClearedCart.current = true;
+      clearCart();
+      toast.success("Payment successful! Order placed.");
+    }
+  }, [reference, clearCart]);
+
   const { isSignedIn, user } = useUser();
 
   const handleCheckout = async () => {
     if (cart.length === 0) return;
 
     if (!isSignedIn) {
-    toast.error("Please sign in to proceed to checkout");
-    return;
-  }
+      toast.error("Please sign in to proceed to checkout");
+      return;
+    }
 
     if (!email || !phone || !address) {
       toast.error("Please fill in all delivery details before checkout");
@@ -46,7 +61,7 @@ export default function CartPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           amount: total * 100,
-          email: "customer@example.com", // replace with form email if needed
+          email: email,
         }),
       });
 

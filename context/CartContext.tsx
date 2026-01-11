@@ -16,6 +16,7 @@ interface CartContextType {
   removeFromCart: (id: number) => void;
   increaseQty: (id: number) => void;
   decreaseQty: (id: number) => void;
+  clearCart: () => void;
   cartCount: number;
   subtotal: number;
   deliveryFee: number;
@@ -26,6 +27,10 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const clearCart = () => {
+  setCart([]);
+  localStorage.removeItem("nilebrew-cart");
+};
 
   useEffect(() => {
     const storedCart = localStorage.getItem("nilebrew-cart");
@@ -80,7 +85,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-
   const deliveryFee = cart.length > 0 ? 400 : 0;
   const total = subtotal + deliveryFee;
 
@@ -92,6 +96,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         removeFromCart,
         increaseQty,
         decreaseQty,
+        clearCart,
         cartCount,
         subtotal,
         deliveryFee,
