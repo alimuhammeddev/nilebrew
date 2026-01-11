@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useUser, SignInButton } from "@clerk/nextjs";
+import Loading from "./loading";
 
 export default function CartPage() {
   const {
@@ -20,6 +21,7 @@ export default function CartPage() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const { isSignedIn, user } = useUser();
 
@@ -35,6 +37,8 @@ export default function CartPage() {
       toast.error("Please fill in all delivery details before checkout");
       return;
     }
+
+    setIsLoading(true);
 
     try {
       const res = await fetch("/api/paystack/initialize", {
@@ -59,6 +63,10 @@ export default function CartPage() {
       toast.error("Payment initialization error");
     }
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-36 mt-28">
@@ -209,7 +217,7 @@ export default function CartPage() {
                 : "bg-[#763919] text-white hover:bg-[#5c2b12] cursor-pointer"
             }`}
           >
-            Proceed to Checkout
+            {isLoading ? "Processing..." : "Proceed to Checkout"}
           </button>
 
           <p className="text-xs text-gray-500 text-center mt-4">

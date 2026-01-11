@@ -78,7 +78,7 @@ export const Navbar = () => {
           {/* icons */}
           <div className="flex items-center space-x-4">
             <Link href="/cart" className="relative">
-              <ShoppingCart size={20} />
+              <ShoppingCart size={20}  className="text-gray-600 hover:text-[#763919] cursor-pointer"/>
               {cartCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-[#763919] text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                   {cartCount}
