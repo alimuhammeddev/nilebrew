@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     });
 
     const data = await paystackRes.json();
-    console.log("Paystack Response:", data); // ✅ debug
+    console.log("Paystack Response:", data);
 
     return NextResponse.json(data);
   } catch (err) {
